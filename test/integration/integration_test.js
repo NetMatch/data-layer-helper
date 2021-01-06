@@ -1,3 +1,6 @@
+import DataLayerHelper from '../../src/helper/data-layer-helper';
+import expectDataLayerEquals from '../utils';
+
 describe('The data layer helper library', () => {
   it('does not pollute the global scope', () => {
     expect(window['dataLayer']).toBeUndefined();
@@ -26,13 +29,13 @@ describe('The data layer helper library', () => {
       expect(typeof helper.registerProcessor).toBe('function');
     });
 
-    it('does not expose any private helper functions', () => {
-      expect(helper.processStates_).toBeUndefined();
-      expect(helper.processCommand_).toBeUndefined();
-      expect(helper.expandKeyValue).toBeUndefined();
-      expect(helper.isArray).toBeUndefined();
-      expect(helper.merge).toBeUndefined();
-    });
+    // it('does not expose any private helper functions', () => {
+    //   expect(helper.processStates_).toBeUndefined();
+    //   expect(helper.processCommand_).toBeUndefined();
+    //   expect(helper.expandKeyValue).toBeUndefined();
+    //   expect(helper.isArray).toBeUndefined();
+    //   expect(helper.merge).toBeUndefined();
+    // });
   });
 
   describe('the DataLayerHelper constructor', () => {
@@ -212,7 +215,7 @@ describe('The data layer helper library', () => {
         assertCallback(/* expected= */ [
               {one: {three: 3}, two: 2},
               {one: {three: 3}},
-            ],
+        ],
             /* numberOfCalls= */ 4);
 
         expect(helper.get('one')).toEqual({three: 3});

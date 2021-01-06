@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.helper.utils.testing.isArray');
-goog.setTestOnly();
-
-const {isArray} = goog.require('dataLayerHelper.helper.utils');
+import {isArray} from '../src/helper/utils';
 
 describe('The `isArray` function of helper', () => {
   /**
@@ -32,6 +29,7 @@ describe('The `isArray` function of helper', () => {
     assertIsNotArray('string');
     assertIsNotArray({a: 1});
     assertIsNotArray(function() {});
+    // eslint-disable-next-line closure/no-undef
     assertIsNotArray(arguments);
     assertIsNotArray(window);
     assertIsNotArray(Array);
@@ -40,9 +38,11 @@ describe('The `isArray` function of helper', () => {
   it('identifies things that are arrays as arrays', () => {
     assertIsArray([]);
     assertIsArray([false]);
+    // eslint-disable-next-line no-array-constructor
     assertIsArray(Array());
     assertIsArray(Array(false));
     assertIsArray(Object([]));
+    // eslint-disable-next-line no-array-constructor
     assertIsArray(Object(Array()));
   });
 

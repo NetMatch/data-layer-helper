@@ -1,44 +1,62 @@
+/* eslint-env node */
 module.exports = function(config) {
+  const isTC = 'TEAMCITY_VERSION' in process.env;
+
   config.set({
-    basePath: '.',
+    basePath: './',
     frameworks: ['jasmine'],
     files: [
-      // Closure library
-      {pattern: 'node_modules/google-closure-library/closure/goog/base.js'},
-      // Source files
-      // Dependencies must be listed before the file they are used in for
-      // the googmodule preprocessor to function properly.
-      {pattern: 'src/logging.js'},
-      {pattern: 'src/plain/plain.js'},
-      {pattern: 'src/helper/utils.js'},
-      {pattern: 'src/helper/data-layer-helper.js'},
-      // jQuery
-      {pattern: 'test/lib/jquery*'},
-      // Tests
-      {pattern: 'test/utils.js'},
-      {pattern: 'test/*_test.js'},
+      {pattern: './test/.all.js'},
     ],
-    preprocessors: {'**/*.js': ['googmodule']},
-    plugins: [
-      require('karma-jasmine'),
-      require('karma-detect-browsers'),
-      require('karma-chrome-launcher'),
-      require('karma-firefox-launcher'),
-      require('karma-ie-launcher'),
-      require('karma-safari-launcher'),
-      require('karma-spec-reporter'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-googmodule-preprocessor'),
-    ],
-    browsers: ['Chrome'],
-    reporters: ['spec', 'kjhtml'],
-    port: 9876,
-    colors: true,
-    autoWatch: true,
-    client: {
-      clearContext: false,
+    exclude: [],
+    preprocessors: {
+      'test/.all.js': ['webpack', 'sourcemap'],
     },
-    singleRun: false,
-    concurrency: Infinity,
+    webpack: {
+      mode: 'development',
+      devtool: 'inline-source-map',
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            loader: 'babel-loader',
+            options: {
+              envName: 'karma',
+              babelrc: false,
+              configFile: true,
+            },
+          },
+        ],
+      },
+    },
+    webpackMiddleware: {
+      stats: 'errors-warnings',
+    },
+    client: {
+      captureConsole: false,
+      jasmine: {
+        random: false,
+      },
+    },
+    reporters: isTC ? ['teamcity'] : ['mocha'],
+    summaryReporter: {show: 'all'},
+    port: 9876,
+    colors: !isTC,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['ChromeHeadless'],
+    singleRun: isTC,
+    customLaunchers: {
+      ChromeHeadless: {
+        base: 'Chrome',
+        debug: true,
+        flags: [
+          '--no-sandbox',
+          '--headless',
+          '--disable-gpu',
+          '--remote-debugging-port=9222',
+        ],
+      },
+    },
   });
 };

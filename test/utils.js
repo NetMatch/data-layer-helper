@@ -8,7 +8,7 @@
  * @param {!Array<*>} expected The array we expect the data layer to look like.
  * @param {!Array<*>} dataLayer The dataLayer
  */
-function expectDataLayerEquals(expected, dataLayer) {
+export default function expectDataLayerEquals(expected, dataLayer) {
   expect(expected.length).toBe(dataLayer.length);
   for (let i = 0; i < expected.length; i++) {
     expect(expected[i]).toEqual(dataLayer[i]);

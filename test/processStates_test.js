@@ -1,7 +1,5 @@
-goog.module('dataLayerHelper.helper.testing.processStates');
-goog.setTestOnly();
-
-const DataLayerHelper = goog.require('dataLayerHelper.helper.DataLayerHelper');
+import jQuery from 'jquery';
+import DataLayerHelper from '../src/helper/data-layer-helper';
 
 describe('The `processStates_` function of helper', () => {
   /**

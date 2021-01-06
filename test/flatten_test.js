@@ -1,7 +1,5 @@
-goog.module('dataLayerHelper.helper.testing.flatten');
-goog.setTestOnly();
-
-const DataLayerHelper = goog.require('dataLayerHelper.helper.DataLayerHelper');
+import DataLayerHelper from '../src/helper/data-layer-helper';
+import expectDataLayerEquals from './utils';
 
 describe('The `flatten` method of helper', () => {
   beforeEach(function() {

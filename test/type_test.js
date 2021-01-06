@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.plain.testing.type');
-goog.setTestOnly();
-
-const {type} = goog.require('dataLayerHelper.plain');
+import {type} from '../src/plain';
 
 describe('The `type` function of plain', () => {
   /**
@@ -54,12 +51,14 @@ describe('The `type` function of plain', () => {
       () => {
         assertType([], 'array', 'the empty array');
         assertType(['number'], 'array', 'nonempty arrays');
+        // eslint-disable-next-line no-array-constructor
         assertType(Array(), 'array',
             'empty arrays made with the Array constructor');
         assertType(Array('string'), 'array',
             'nonempty arrays made with the Array constructor');
         assertType(Object([]), 'array',
             'arrays made with the object constructor');
+        // eslint-disable-next-line no-array-constructor
         assertType(Object(Array()), 'array',
             'arrays made with the object and array constructor');
       });
@@ -88,6 +87,7 @@ describe('The `type` function of plain', () => {
 
   it('identifies an arguments object', () => {
     const argumentsTest = () => {
+      // eslint-disable-next-line closure/no-undef
       assertType(arguments, 'arguments', 'Arguments object');
     };
     argumentsTest(1, 2, 3, 4);

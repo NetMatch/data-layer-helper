@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.helper.testing.listener');
-goog.setTestOnly();
-
-const DataLayerHelper = goog.require('dataLayerHelper.helper.DataLayerHelper');
+import DataLayerHelper from '../src/helper/data-layer-helper';
 
 describe('The helper when listening to the past', () => {
   let dataLayer;
@@ -10,6 +7,7 @@ describe('The helper when listening to the past', () => {
   // jasmine spy since the first argument is the model, which mutates
   // constantly.
   const listenerExpecting = (calls, operation = () => {}) => {
+    // eslint-disable-next-line require-jsdoc
     function checkArgsAndRun(model, message) {
       // objectContaining call ensures that the arguments object
       // can match an array.

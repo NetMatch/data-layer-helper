@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.plain.testing.isPlainObject');
-goog.setTestOnly();
-
-const {isPlainObject} = goog.require('dataLayerHelper.plain');
+import {isPlainObject} from '../src/plain';
 
 describe('The `isPlainObject` method of plain', () => {
   /**
@@ -19,6 +16,7 @@ describe('The `isPlainObject` method of plain', () => {
     assertIsPlainObject(/* value= */ {}, /* expected= */ true);
     assertIsPlainObject({a: 1}, true);
     assertIsPlainObject(Object(), true);
+    // eslint-disable-next-line no-new-object
     assertIsPlainObject(new Object(), true);
   });
 
@@ -52,11 +50,14 @@ describe('The `isPlainObject` method of plain', () => {
   it('identifies arrays as not plain objects', () => {
     assertIsPlainObject([], false);
     assertIsPlainObject(['number'], false);
+    // eslint-disable-next-line no-array-constructor
     assertIsPlainObject(Array(), false);
+    // eslint-disable-next-line no-array-constructor
     assertIsPlainObject(new Array(), false);
     assertIsPlainObject(Array('string'), false);
     assertIsPlainObject(new Array('string'), false);
     assertIsPlainObject(Object([]), false);
+    // eslint-disable-next-line no-array-constructor
     assertIsPlainObject(Object(Array()), false);
   });
 
@@ -70,6 +71,7 @@ describe('The `isPlainObject` method of plain', () => {
     assertIsPlainObject(document, false);
     assertIsPlainObject(document.body, false);
     assertIsPlainObject(document.body.firstChild, false);
+    // eslint-disable-next-line require-jsdoc
     class Foo {}
     assertIsPlainObject(new Foo(), false);
   });
@@ -77,6 +79,7 @@ describe('The `isPlainObject` method of plain', () => {
   it('does not misidentify inherited objects', () => {
     if (!Object.create) {
       Object.create = function(o) {
+        // eslint-disable-next-line require-jsdoc
         class F extends o {}
         return new F();
       };

@@ -44,10 +44,9 @@
  * @author bkuhn@google.com (Brian Kuhn)
  */
 
-goog.module('dataLayerHelper.helper.DataLayerHelper');
-const {LogLevel, log} = goog.require('dataLayerHelper.logging');
-const {expandKeyValue, isArray, isString, isArguments, merge} = goog.require('dataLayerHelper.helper.utils');
-const {isPlainObject, type} = goog.require('dataLayerHelper.plain');
+import {LogLevel, log} from '../logging';
+import {expandKeyValue, isArray, isString, isArguments, merge} from './utils';
+import {isPlainObject, type} from '../plain';
 
 /**
  * @typedef {{
@@ -214,7 +213,7 @@ class DataLayerHelper {
     for (let i = 0; i < startingLength; i++) {
      // Run the commands one at a time to maintain the correct
      // length of the queue on each command.
-     this.processStates_([this.dataLayer_[i]], !(this.listenToPast_));
+      this.processStates_([this.dataLayer_[i]], !(this.listenToPast_));
     }
   }
 
@@ -275,7 +274,7 @@ class DataLayerHelper {
    *
    * @param {string} name The string which should be passed into the command API
    *     to call the processor.
-   * @param {function(...):(!Object|undefined)} processor The callback function
+   * @param {function([]):(!Object|undefined)} processor The callback function
    *    to register. Will be invoked when an arguments object whose first
    *    parameter is name is pushed to the data layer.
    * @this {DataLayerHelper}
@@ -376,8 +375,6 @@ class DataLayerHelper {
   }
 }
 
-window['DataLayerHelper'] = DataLayerHelper;
-
 /**
  * Helper function that will build the abstract model interface using the
  * supplied dataLayerHelper.
@@ -440,4 +437,4 @@ function processCommand_(command, model) {
   }
 }
 
-exports = DataLayerHelper;
+export default DataLayerHelper;

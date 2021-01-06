@@ -1,11 +1,10 @@
-goog.module('dataLayerHelper.logging');
-
+/* eslint-disable no-console */
 /**
  * @define {boolean} When true, potential code errors will be logged to the
  * console. To enable this, run yarn build-debug to compile the distribution
  * code.
  */
-const DLH_DEBUG = goog.define('DLH_DEBUG', false);
+const DLH_DEBUG = process.env.debug;
 
 /**
  * Enum for choosing the level at which to log an error.
@@ -41,7 +40,7 @@ function log(toLog, logLevel) {
   }
 }
 
-exports = {
+export {
   LogLevel,
   log,
 };

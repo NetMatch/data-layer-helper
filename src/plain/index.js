@@ -11,9 +11,6 @@
  * @author bkuhn@google.com (Brian Kuhn)
  */
 
-goog.module('dataLayerHelper.plain');
-
-
 /**
  * Pattern used by plain.type to match [object XXX] strings.
  * @type {!RegExp}
@@ -98,8 +95,8 @@ function isPlainObject(value) {
   // According to jQuery, inherited properties are always enumerated last, so
   // it's safe to only check the last enumerated property.
   let key;
-  for (key in value) {}
+  for (key in value);
   return key === undefined || hasOwn(value, key);
 }
 
-exports = {type, hasOwn, isPlainObject};
+export {type, hasOwn, isPlainObject};

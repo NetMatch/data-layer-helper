@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.helper.testing.setCommand');
-goog.setTestOnly();
-
-const DataLayerHelper = goog.require('dataLayerHelper.helper.DataLayerHelper');
+import DataLayerHelper from '../src/helper/data-layer-helper';
 
 describe('The set command', () => {
   let dataLayer;
@@ -69,7 +66,7 @@ describe('The set command', () => {
           targetModel['yes'] = 'no';
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
 
     it('updates model without corruption with multiple key-val pairs',
@@ -81,7 +78,7 @@ describe('The set command', () => {
           targetModel['goodbye'] = 'bluesky';
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
 
     it('updates model without corruption with nested key-val pairs',
@@ -95,7 +92,7 @@ describe('The set command', () => {
           targetModel['yes'] = {'yes': 'yes', 'no': 'yes'};
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
 
     it('updates model by merging existing array with a new one',
@@ -119,7 +116,7 @@ describe('The set command', () => {
           targetModel['array'] = [undefined, undefined, undefined, 4, 5, 6];
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
 
     it('updates model by merging existing object with a new one',
@@ -133,7 +130,7 @@ describe('The set command', () => {
           targetModel['object'] = {'value': 'test', 'test': 'value'};
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
 
     it('results in no-op when single argument is not an object',
@@ -141,7 +138,7 @@ describe('The set command', () => {
           commandAPI('set', 'no op');
 
           expect(dlh.model_).toEqual(targetModel);
-        },
+        }
     );
   });
 

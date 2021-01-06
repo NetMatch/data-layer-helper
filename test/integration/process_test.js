@@ -1,3 +1,5 @@
+import DataLayerHelper from '../../src/helper/data-layer-helper';
+
 describe('The process function of helper', () => {
   let dataLayer;
   let commandAPI;

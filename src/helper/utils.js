@@ -1,6 +1,4 @@
-goog.module('dataLayerHelper.helper.utils');
-
-const {type, hasOwn, isPlainObject} = goog.require('dataLayerHelper.plain');
+import {type, hasOwn, isPlainObject} from '../plain';
 
 /**
  * Converts the given key value pair into an object that can be merged onto
@@ -95,7 +93,7 @@ function merge(from, to) {
   delete to['_clear'];
 }
 
-exports = {
+export {
   expandKeyValue,
   isArray,
   isString,

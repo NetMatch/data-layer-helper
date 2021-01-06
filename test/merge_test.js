@@ -3,10 +3,9 @@
  * In this test file, when referring to a variable of 'other' type,
  * we mean a type which is neither an array nor a plain object.
  */
-goog.module('dataLayerHelper.helper.utils.testing.merge');
-goog.setTestOnly();
 
-const {isArray, merge} = goog.require('dataLayerHelper.helper.utils');
+import {isArray, merge} from '../src/helper/utils';
+import jQuery from 'jquery';
 
 describe('The `merge` function of helper', () => {
   /**

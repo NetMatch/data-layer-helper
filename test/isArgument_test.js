@@ -1,7 +1,4 @@
-goog.module('dataLayerHelper.helper.utils.testing.isArguments');
-goog.setTestOnly();
-
-const {isArguments} = goog.require('dataLayerHelper.helper.utils');
+import {isArguments} from '../src/helper/utils';
 
 describe('The `isArguments` function of helper', () => {
   it('identifies an arguments object', () => {
@@ -46,8 +43,8 @@ describe('The `isArguments` function of helper', () => {
   it('identifies non-arguments objects as not Arguments objects', () => {
     expect(isArguments([1, 2, 3])).toBeFalse();
     expect(isArguments({'hello': 'world', 'foo': 'bar'})).toBeFalse();
-    expect(isArguments(new Object())).toBeFalse();
-    expect(isArguments(new String('test'))).toBeFalse();
+    expect(isArguments({})).toBeFalse();
+    expect(isArguments('test')).toBeFalse();
     expect(isArguments(() => {})).toBeFalse();
     expect(isArguments(function() {})).toBeFalse();
   });
