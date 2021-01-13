@@ -32,12 +32,7 @@ yarn add data-layer-helper
 
 Next, import the code into your javascript:
 ```js
-import 'node_modules/data-layer-helper/dist/data-layer-helper';
-```
-
-For the development version (bigger file size, but reports possible errors to the console):
-```js
-import 'node_modules/data-layer-helper/dist/data-layer-helper-test-debug';
+import DataLayerHelper from 'data-layer-helper';
 ```
 
 ## What is a Data Layer Queue?

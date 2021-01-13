@@ -1,7 +1,7 @@
 {
-  "name": "data-layer-helper",
+  "name": "@netmatch/data-layer-helper",
   "description": "A utility to help many vendors manage the data layer of an application.",
-  "version": "0.0.1",
+  "version": "1.0.0-rc.0",
   "scripts": {
     "test": "run-s test:lint test:unit",
     "test:lint": "eslint .",
@@ -33,12 +33,12 @@
     "@babel/preset-env": "^7.12.11",
     "@babel/runtime": "^7.12.5",
     "babel-loader": "^8.2.2",
+    "core-js": "^3.8.2",
     "eslint": "~7.3.1",
     "eslint-config-closure-es6": "~0.1.1",
     "eslint-config-google": "~0.14.0",
     "eslint-plugin-jasmine": "~4.1.1",
     "fast-async": "^6.3.8",
-    "grunt-closure-tools": "~1.0.0",
     "jasmine": "~3.5.0",
     "jasmine-core": "~3.5.0",
     "jquery": "^3.5.1",
@@ -53,12 +53,10 @@
     "npm-run-all": "^4.1.5",
     "webpack": "^4.44.2"
   },
-  "dependencies": {
-    "core-js": "^3.8.2"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/google/data-layer-helper"
+    "url": "https://github.com/NetMatch/data-layer-helper"
   },
   "directories": {
     "lib": "./src",
