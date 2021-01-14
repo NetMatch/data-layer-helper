@@ -1,0 +1,4 @@
+; core variables
+[core]
+	autocrlf = input
+	eol = lf

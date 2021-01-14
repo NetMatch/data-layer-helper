@@ -14,8 +14,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "jasmine",
-    "closure"
+    "jasmine"
   ],
   "rules": {
     "prefer-rest-params": "off", // We don't want this, adds a polyfill
