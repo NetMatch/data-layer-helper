@@ -4,7 +4,7 @@
  * console. To enable this, run yarn build-debug to compile the distribution
  * code.
  */
-const DLH_DEBUG = process.env.debug;
+const DLH_DEBUG = process.env.DEBUG;
 
 /**
  * Enum for choosing the level at which to log an error.
