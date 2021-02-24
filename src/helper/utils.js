@@ -89,6 +89,17 @@ function merge(from, to) {
         to[property] = fromProperty;
       }
     }
+    const symbols = Object.getOwnPropertySymbols(from);
+    // only copy symbols if from and to are of the same type.
+    if (
+      symbols.length &&
+      (isPlainObject(from) && isPlainObject(to)) ||
+      (isArray(from) && isArray(to))
+    ) {
+      symbols.forEach((symbol) => {
+        to[symbol] = from[symbol];
+      });
+    }
   }
   delete to['_clear'];
 }
